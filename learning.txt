@@ -1,0 +1,107 @@
+# Rename hostname
+1. Edit Your /etc/hostname File
+
+sudo gedit /etc/hostname
+
+2. Edit Your /etc/hosts File (127.0.1.1)
+
+sudo gedit /etc/hosts
+
+3. Change Your Hostname Immediately
+
+sudo hostname your-new-hostname
+#
+
+# Delete a user:
+
+1. sudo deluser temporary
+
+2. sudo rm -r /home/temporary
+
+#File-sharing with samba
+1. Edit samba configration file:
+
+sudo gedit /etc/samba/smb.conf
+
+2. Copy the following content:
+
+[File-sharing]
+	path = /media/root/vking34/
+	browseable = yes
+	readonly = no
+	writable = yes
+
+3. Where path: the directory including files to share,
+browseable: the ability to enter the sharing folder,
+readonly: being only able to copy,
+writale: being able to edit,
+then create a user for samba:
+
+smbpasswd -a root
+
+4. Type your password ,then start the service:
+
+sudo service smbd start
+sudo service nmbd start
+
+5. OK, here we go
+#
+
+# Setup NFS ( Network file system )
+
+1.Server, install nfs
+
+sudo apt-get install nfs-common
+sudo apt-get install nfs-kernel-server
+
+2.Server, edit /etc/exports:
+
+/path/to/sharing-directory	network.address/subnet.mask(rw,sync,no_root_squash,subtree_check)
+
+*note: no_root_squash for client to write
+
+3. Server, run service
+
+sudo service nfs-kernel-server start
+
+4. Client, install nfs
+
+sudo apt-get install nfs-common
+
+5. Client, edit /etc/fstab:
+
+server.address:/path/to/sharing-directory	/path/to/a/local/directory	nfs	rw,soft,intr,noatime=100,rsize=32768,wsize=32768	0	2
+
+6. Check mount
+
+sudo mount -a
+#
+
+# Setup app desktop
+1. Extract the file to "opt"
+
+sudo tar -xf filename.tgz -C /opt/appname
+
+2. Down the icon of the app then copy it into /opt/appname
+
+wget "http://blabla.png" -0 picname.png
+
+sudo cp picname.png /opt/appname
+
+3. Execute it on Desktop
+
+sudo touch /usr/share/applications/appname.desktop
+sudo vim /usr/share/applications/appname.desktop
+
+4. Edit:
+
+[Desktop Entry]
+Name=AppName
+Comment=
+Exec=/opt/appname/App.sh
+Icon=/opt/appname/picname.png
+Terminal=false
+Type=Application
+Categories=        (Example: Messaging,Internet)
+
+5. Press "Esc" then type ":wq" to quit with saving
