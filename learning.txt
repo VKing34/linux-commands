@@ -105,3 +105,44 @@ Type=Application
 Categories=        (Example: Messaging,Internet)
 
 5. Press "Esc" then type ":wq" to quit with saving
+#
+
+# How to use git
+1. Access to the master directory
+
+cd /path/to/the/directory
+
+2. Initalize .git
+
+git init
+
+3. Add clone to github
+
+git remote add origin https://github.com/username/path/to/project.git
+
+4. Add file
+
+git add file
+
+5. Commit addition
+
+git commit -m "description"
+
+6. push file
+
+git push -u origin master
+
+7. to remove file / dir
+
+git rm file
+git rm --cached dir
+
+8. To update file from github
+
+git pull origin master
+
+9. check status
+
+git status
+#
+

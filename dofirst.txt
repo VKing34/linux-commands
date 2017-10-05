@@ -1,0 +1,11 @@
+#Fix sound
+curl -s https://raw.githubusercontent.com/nu11secur1ty/pulseaudio/master/pulseaudio.sh | bash
+
+
+#Commands for shortcuts
+
+//Open Terminal
+gnome-terminal
+
+//Open file manager
+nautilus -w

