@@ -144,5 +144,9 @@ git pull origin master
 9. check status
 
 git status
+
+10. To caching your git password
+
+git config --global credential.helper cache
 #
 
