@@ -1,0 +1,49 @@
+#!/bin/bash
+
+function upper {
+shift
+for i		 
+do
+	tr a-z A-Z < $1 > $1.out
+	cat $1.out
+	shift
+done
+}
+
+lower() {
+shift
+for i 
+do
+	tr A-Z a-z < $1 > $1.out
+	cat $1.out
+	shift
+done
+}
+
+print() {
+shift
+for i
+do
+	cat $1
+	shift
+done
+}
+
+usage_error(){
+
+echo "$1 syntax is $1 <option> <input files>"
+echo ""
+echo "where option is one the following"
+echo "-p : to print out files"
+echo "-u : to save as uppercase"
+echo "-l : to save as lowercase"
+}
+
+case $1 in
+	-p ) print $@;;
+	-u ) upper $@;;
+	-l ) lower $@;;
+	* ) usage_error $0;;
+esac
+
+

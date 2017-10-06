@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+select item in "$@"
+do
+	echo "Do you want to print out this $item (yes - y or Y / no - n or N) ?"
+	read res
+	if [ $res = "y" -o $res = "Y" ]			# res == "y" || res == "Y"
+	then
+		cat $item
+		continue
+	else
+		echo "Exiting ..."
+		sleep 0.5
+		exit 0
+	fi
+done

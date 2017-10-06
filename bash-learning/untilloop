@@ -1,0 +1,10 @@
+#!/bin/bash
+
+count=1
+
+until [ -z "$*" ]			# -z return true when the length of string is 0
+do
+echo "This is the parameter $count $1 "
+shift
+count=`expr $count + 1`
+done

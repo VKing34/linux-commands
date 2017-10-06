@@ -1,0 +1,10 @@
+#!/bin/bash
+
+count=1
+while [ -n "$*" ]
+do
+echo "This is parameter $count $1"
+shift					# shift to the next paramete of the command line (go from the first one to the last one then end with NULL)
+count=`expr $count + 1`			# count = count + 1
+done
+

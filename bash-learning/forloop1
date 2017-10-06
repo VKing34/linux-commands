@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for file
+do
+tr a-z A-Z < $file > $file.caps
+cat $file.caps
+done
+
+
